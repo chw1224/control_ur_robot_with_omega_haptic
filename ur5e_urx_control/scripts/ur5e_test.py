@@ -16,12 +16,18 @@ class ur5e_robot:
 
 	def __init__(self, ur5e_port, tcp=((0,0,0.1,0,0,0)), payload_m=0.0, payload_location=(0,0,0)):
 		try:
+			print("-----------------------------------------------------")
 			print("Connecting to UR5e")
+			print("-----------------------------------------------------")
 			self.ur5e = urx.Robot(ur5e_port)
-			print(self.ur5e)
 			self.connect_success = True
+			print("-----------------------------------------------------")
+			print("Connected!")
+			print("-----------------------------------------------------")
 		except:
+			print("-----------------------------------------------------")
 			print("Cannot connect UR5e")
+			print("-----------------------------------------------------")
 			self.connect_success = False
 			return
 			
@@ -35,6 +41,9 @@ class ur5e_robot:
 		self.get_initial_pose()
 		self.robot_goal_position = [0.0, 0.0, 0.0]
 		
+	def kill_node(self):
+		self.ur5e.close()
+	
 	def get_initial_pose(self):
 		pose = self.ur5e.get_pose()
 		self.initial_pose = [round(pose.pos[0],2),round(pose.pos[1],2),round(pose.pos[2],2)]
@@ -72,15 +81,10 @@ class ur5e_robot:
 		rospy.Subscriber("/haptic/velocity", Vector3, self.hapticVelocityCallback)
 		
 	def run(self):
-		rate = rospy.Rate(5)
+		rate = rospy.Rate(1)
 		while not rospy.is_shutdown():
-			try:
-				self.control_ur5e_speed()
-			except KeyboardInterrupt:
-				print("^C")
-				break
+			self.control_ur5e_speed()
 			rate.sleep()
-			
 	def get_success(self):
 		return self.connect_success
 
@@ -91,8 +95,7 @@ def main():
 	if success_:
 		ur5e.init()
 		ur5e.run()
-	else :
-		print("Error!")
+	ur5e.kill_node()
 	
 		
 if __name__=='__main__':
