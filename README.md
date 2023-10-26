@@ -23,10 +23,10 @@ Click 'Initialize' button.
 ## Run
 
 ```bash
-    rosrun ur5e_urx_control ur5e_test.py
+rosrun ur5e_urx_control ur5e_test.py
 ```
 ```bash
-    rosrun omega_haptic omega_haptic
+rosrun omega_haptic omega_haptic
 ```
 
 ## Issues
