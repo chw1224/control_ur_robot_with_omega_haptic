@@ -24,7 +24,7 @@ OmegaHaptic::OmegaHaptic(ros::NodeHandle& node, float loop_rate, bool set_force)
 	force_[0] = 0.0;
 	force_[1] = 0.0;
 	force_[2] = 0.0;
-	
+
 	velocity_[0] = 0.0;
 	velocity_[1] = 0.0;
 	velocity_[2] = 0.0;
