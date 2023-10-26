@@ -1,0 +1,10 @@
+################################################################################
+#
+#  Copyright (C) 2001-2023 Force Dimension, Switzerland.
+#  All Rights Reserved.
+#
+#  Force Dimension SDK 3.16.1
+#
+################################################################################
+
+LDLIBS += -lGL -lGLU -lX11 -lXcursor -lXrandr -lXinerama -ldl

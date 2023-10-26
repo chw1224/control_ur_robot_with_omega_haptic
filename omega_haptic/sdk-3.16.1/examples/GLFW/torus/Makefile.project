@@ -1,0 +1,15 @@
+################################################################################
+#
+#  Copyright (C) 2001-2023 Force Dimension, Switzerland.
+#  All Rights Reserved.
+#
+#  Force Dimension SDK 3.16.1
+#
+################################################################################
+
+# Eigen dependency
+EIGEN      = $(TOP_DIR)/externals/Eigen
+CXXFLAGS += -I$(EIGEN)
+
+# GLFW dependency
+LDLIBS += -lglfw

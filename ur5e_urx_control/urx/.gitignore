@@ -1,0 +1,5 @@
+docs/_*
+build
+.idea/
+.history/
+*.pyc
